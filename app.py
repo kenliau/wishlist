@@ -37,7 +37,7 @@ def login():
           error = 'Invalid password'
       else:
           session['logged_in'] = True
-          return redirect(url_for('index'))
+          return redirect(url_for('display_wishlist', userid=request.form['username']))
   return render_template('login.html', error=error)
 
 
