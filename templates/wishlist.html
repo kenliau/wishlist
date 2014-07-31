@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wishlist</title>
+  <meta name="author" content="Kenny Liau"/>
+  <meta name="copyright" content="Kenny Liau Copyright (c) 2014"/>
+  <link rel="stylesheet" href="../static/css/foundation.min.css"/>
+  <link rel="stylesheet" href="../static/css/custom.css"/>
+  <script src="../static/js/vendor/modernizr.js"></script>
+</head>
+<body>
+  <section class="wishlist-header">
+    <p> {{userid}}'s wishlist </p>
+  </section>
+
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <a href="#" data-reveal-id="myModal" class="expand radius button purple-button" >Add to Wishlist</a>
+      <div id="myModal" class="reveal-modal" data-reveal>
+        {% if error %}
+          <div data-alert class="alert-box radius purple-background">
+            <a href="#" class="close">&times;</a>
+            <strong>Error:</strong> {{ error }}
+          </div>
+        {% endif %}
+        <form method="post">
+          <div class="row collapse">
+            <div class="large-2 columns">
+              <label class="inline">Item Name</label>
+            </div>
+            <div class="large-10 columns">
+              <input name="item" type="text" id="item" placeholder="Item Name" required="required">
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="large-2 columns">
+              <label class="inline">URL</label>
+            </div>
+            <div class="large-10 columns">
+              <input name="url" type="text" id="url" placeholder="URL">
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="large-2 columns">
+              <label class="inline">Image URL</label>
+            </div>
+            <div class="large-10 columns">
+              <input name="imageUrl" type="text" id="imageURL" placeholder="URL for image">
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="large-1 columns">
+              <label for="priority" style="display: inline;">Priority</label>
+              <input type="checkbox" name="priority" id="priority" value="1">
+            </div>
+          </div>
+
+
+          <button type="submit" class="radius button purple-button">Add to Wishlist</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+        {% for item in wishlist_array %}
+        <li>
+          {% if item.imageUrl %}
+            <img src="{{ item.imageUrl }}" style="width: 227.5px; height: 227.5px">
+          {% else %}
+            <img src="http://placehold.it/1000x1000&amp;text=No Image">
+          {% endif %}
+          <div class="panel">
+            <h5>
+            {% if item.url %}
+              <a href="{{item.url}}" target="_blank"> {{ item.itemName }}  </a>
+            {% else %}
+              {{ item.itemName }}
+            {% endif %}
+            </h5>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <script src="/static/js/vendor/jquery.js"></script>
+  <script src="/static/js/vendor/fastclick.js"></script>
+  <script src="/static/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+body {
+}
+
+
+header.header p {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 10em;
+  color: #daa7fb;
+  background: #555555;
+}
+
+section.wishlist-header p {
+  font-size: 2em;
+  color: #daa7fb;
+  border-top: 3px solid #e5d1e7;
+  border-bottom: 5px solid #e5d1e7;
+  background: #555555;
+}
+
+.alert-box.purple-background {
+  background-color: #ad6db3; 
+  border-color: #85488b;
+}
+
+.purple-button { 
+  background-color: #ad6db3; 
+}
+.purple-button:hover, .purple-button:focus {
+  background-color: #85488b; 
+}
+
+a {
+  color: #ad6db3; 
+}
+
+a:hover {
+  color: #85488b; 
+}
+
+
+img {
+  border: 1px solid #ad6db3;
+}
